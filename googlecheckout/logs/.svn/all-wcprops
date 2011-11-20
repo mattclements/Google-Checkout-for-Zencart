@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/59/trunk/googlecheckout/logs
+END
+response_message.log
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/59/trunk/googlecheckout/logs/response_message.log
+END
+response_error.log
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/59/trunk/googlecheckout/logs/response_error.log
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/59/trunk/googlecheckout/logs/index.html
+END
+.htaccess
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/59/trunk/googlecheckout/logs/.htaccess
+END
