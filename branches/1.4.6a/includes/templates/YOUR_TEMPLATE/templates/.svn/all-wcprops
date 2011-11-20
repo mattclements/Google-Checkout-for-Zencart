@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/70/branches/1.4.6a/includes/templates/YOUR_TEMPLATE/templates
+END
+tpl_login_default.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/70/branches/1.4.6a/includes/templates/YOUR_TEMPLATE/templates/tpl_login_default.php
+END
+tpl_gc_return_display.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/68/branches/1.4.6a/includes/templates/YOUR_TEMPLATE/templates/tpl_gc_return_display.php
+END
+tpl_shopping_cart_default.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/70/branches/1.4.6a/includes/templates/YOUR_TEMPLATE/templates/tpl_shopping_cart_default.php
+END
+tpl_gc_return_noproduct.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/68/branches/1.4.6a/includes/templates/YOUR_TEMPLATE/templates/tpl_gc_return_noproduct.php
+END
+tpl_checkout_payment_default.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/68/branches/1.4.6a/includes/templates/YOUR_TEMPLATE/templates/tpl_checkout_payment_default.php
+END
+tpl_time_out_default.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/70/branches/1.4.6a/includes/templates/YOUR_TEMPLATE/templates/tpl_time_out_default.php
+END

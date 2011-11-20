@@ -1,0 +1,311 @@
+HOW TO INSTALL GOOGLE CHECKOUT MODULE FOR ZEN-CART (v1.3RC2)
+
+If you haven't read the README file yet, please read it first.
+
+UPDATE from v1.2.*
+================
+
+Modified Files:
+  1. YOUR_ZENCART_FOLDER/admin/includes/functions/extra_functions/added_function_for_google_checkout.php
+  2. YOUR_ZENCART_FOLDER/admin/orders.php
+  3. YOUR_ZENCART_FOLDER/googlecheckout/gcheckout.php
+  4. YOUR_ZENCART_FOLDER/googlecheckout/responsehandler.php
+  5. YOUR_ZENCART_FOLDER/includes/modules/payment/googlecheckout.php
+  6. YOUR_ZENCART_FOLDER/includes/templates/YOUR_TEMPLATE/templates/tpl_login_default.php
+  7. YOUR_ZENCART_FOLDER/includes/templates/YOUR_TEMPLATE/templates/tpl_shopping_cart_default.php
+
+New Files: (Optional)
+  1. YOUR_ZENCART_FOLDER/googlecheckout/shipping_generator/*
+  
+  
+
+IMPORTANT: Uninstall and re install the module. If not, many new configuration will not be enabled.
+
+There are two installation options you need to choose from, so please read carefully to determine which option is right for you.
+
+
+OPTION A:
+=========
+If you have the basic Zen Cart installation without any other modules or add-on's, simply copy the provided files into your Zen Cart system, preserving the file structure.
+
+ For your reference, here is the list of files you need to copy over to your system:
+
+   1. YOUR_ZENCART_FOLDER/admin/orders.php
+   2. YOUR_ZENCART_FOLDER/admin/includes/functions/extra_functions/added_function_for_google_checkout.php
+   3. YOUR_ZENCART_FOLDER/googlecheckout/gcheckout.php
+   4. YOUR_ZENCART_FOLDER/googlecheckout/googlemerchantcalculations.php
+   5. YOUR_ZENCART_FOLDER/googlecheckout/googleresult.php
+   6. YOUR_ZENCART_FOLDER/googlecheckout/multisocket.php
+   7. YOUR_ZENCART_FOLDER/googlecheckout/responsehandler.php
+   8. YOUR_ZENCART_FOLDER/googlecheckout/response_error.log
+   9. YOUR_ZENCART_FOLDER/googlecheckout/response_message.log
+  10. YOUR_ZENCART_FOLDER/googlecheckout/xmlbuilder.php
+  11. YOUR_ZENCART_FOLDER/googlecheckout/xmlparser.php
+  12. YOUR_ZENCART_FOLDER/includes/languages/english/modules/payment/googlecheckout.php
+  13. YOUR_ZENCART_FOLDER/includes/modules/payment/googlecheckout.php
+  14. YOUR_ZENCART_FOLDER/includes/modules/show_google_components.php
+  15. YOUR_ZENCART_FOLDER/includes/templates/YOUR_TEMPLATE/templates/tpl_login_default.php
+  16. YOUR_ZENCART_FOLDER/includes/templates/YOUR_TEMPLATE/templates/tpl_shopping_cart_default.php
+  17. YOUR_ZENCART_FOLDER/admin/images/googlecheckout/*
+  18. YOUR_ZENCART_FOLDER/admin/htaccess.php
+  19. YOUR_ZENCART_FOLDER/admin/multisock.html
+  20. YOUR_ZENCART_FOLDER/googlecheckout/multisocket.php
+  21. YOUR_ZENCART_FOLDER/googlecheckout/shipping_generator/* (Optional)
+
+* Note: The folder YOUR_TEMPLATE refers to the folder that contains your templates.
+ The folder YOUR_TEMPLATE in the package refers to the folder that contains
+ your templates, you must put the files in /includes/templates/YOUR_TEMPLATE/ 
+ in your own templates dir there you should see the GC buy button.
+
+OPTION B:
+=========
+If you have other modules installed on your Zen Cart installation, replacing your existing files might break your existing installation. In this case, you need to edit the existing files manually.
+
+ For this option, follow the instructions below:
+
+ I. Copy the following new files into your existing system, preserving the file structure:
+ -----------------------------------------------------------------------------------------
+   1. YOUR_ZENCART_FOLDER/admin/includes/functions/extra_functions/added_function_for_google_checkout.php
+   2. YOUR_ZENCART_FOLDER/googlecheckout/gcheckout.php
+   3. YOUR_ZENCART_FOLDER/googlecheckout/googlemerchantcalculations.php
+   4. YOUR_ZENCART_FOLDER/googlecheckout/googleresult.php
+   5. YOUR_ZENCART_FOLDER/googlecheckout/multisocket.php
+   6. YOUR_ZENCART_FOLDER/googlecheckout/responsehandler.php
+   7. YOUR_ZENCART_FOLDER/googlecheckout/response_error.log
+   8. YOUR_ZENCART_FOLDER/googlecheckout/response_message.log
+   9. YOUR_ZENCART_FOLDER/googlecheckout/xmlbuilder.php
+  10. YOUR_ZENCART_FOLDER/googlecheckout/xmlparser.php
+  11. YOUR_ZENCART_FOLDER/includes/languages/english/modules/payment/googlecheckout.php
+  12. YOUR_ZENCART_FOLDER/includes/modules/payment/googlecheckout.php
+  13. YOUR_ZENCART_FOLDER/includes/modules/show_google_components.php
+  14. YOUR_ZENCART_FOLDER/admin/images/googlecheckout/*
+  15. YOUR_ZENCART_FOLDER/admin/htaccess.php
+  16. YOUR_ZENCART_FOLDER/admin/multisock.html
+  17. YOUR_ZENCART_FOLDER/googlecheckout/multisocket.php
+  18. YOUR_ZENCART_FOLDER/googlecheckout/shipping_generator/* (Optional)
+
+
+ II. Manually edit the following files from your system as instructed below:
+ ---------------------------------------------------------------------------
+  1. YOUR_ZENCART_FOLDER/admin/orders.php
+  2. YOUR_ZENCART_FOLDER/includes/templates/YOUR_TEMPLATE/templates/tpl_login_default.php
+  3. YOUR_ZENCART_FOLDER/includes/templates/YOUR_TEMPLATE/templates/tpl_shopping_cart_default.php
+
+
+* The LINE number indicates where the change would need to be made if the file was unchanged by other modules.
+
+----------------------------------------------------------------------------
+1. YOUR_ZENCART_FOLDER/admin/orders.php                              LINE 103
+============================================================================
+REPLACE:
+
+//send emails
+      $message = STORE_NAME . "\n" . EMAIL_SEPARATOR . "\n" .
+      EMAIL_TEXT_ORDER_NUMBER . ' ' . $oID . "\n\n" .
+      EMAIL_TEXT_INVOICE_URL . ' ' . zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL') . "\n\n" .
+      EMAIL_TEXT_DATE_ORDERED . ' ' . zen_date_long($check_status->fields['date_purchased']) . "\n\n" .
+      strip_tags($notify_comments) .
+      EMAIL_TEXT_STATUS_UPDATED . sprintf(EMAIL_TEXT_STATUS_LABEL, $orders_status_array[$status] ) .
+      EMAIL_TEXT_STATUS_PLEASE_REPLY;
+
+      $html_msg['EMAIL_CUSTOMERS_NAME']    = $check_status->fields['customers_name'];
+      $html_msg['EMAIL_TEXT_ORDER_NUMBER'] = EMAIL_TEXT_ORDER_NUMBER . ' ' . $oID;
+      $html_msg['EMAIL_TEXT_INVOICE_URL']  = '<a href="' . zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL') .'">'.str_replace(':','',EMAIL_TEXT_INVOICE_URL).'</a>';
+      $html_msg['EMAIL_TEXT_DATE_ORDERED'] = EMAIL_TEXT_DATE_ORDERED . ' ' . zen_date_long($check_status->fields['date_purchased']);
+      $html_msg['EMAIL_TEXT_STATUS_COMMENTS'] = nl2br($notify_comments);
+      $html_msg['EMAIL_TEXT_STATUS_UPDATED'] = str_replace('\n','', EMAIL_TEXT_STATUS_UPDATED);
+      $html_msg['EMAIL_TEXT_STATUS_LABEL'] = str_replace('\n','', sprintf(EMAIL_TEXT_STATUS_LABEL, $orders_status_array[$status] ));
+      $html_msg['EMAIL_TEXT_NEW_STATUS'] = $orders_status_array[$status];
+      $html_msg['EMAIL_TEXT_STATUS_PLEASE_REPLY'] = str_replace('\n','', EMAIL_TEXT_STATUS_PLEASE_REPLY);
+
+            zen_mail($check_status->fields['customers_name'], $check_status->fields['customers_email_address'], EMAIL_TEXT_SUBJECT . ' #' . $oID, $message, STORE_NAME, EMAIL_FROM, $html_msg, 'order_status');
+
+            $customer_notified = '1';
+//send extra emails
+            if (SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO_STATUS == '1' and SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO != '') {
+              zen_mail('', SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO, SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO_SUBJECT . ' ' . EMAIL_TEXT_SUBJECT . ' #' . $oID, $message, STORE_NAME, EMAIL_FROM, $html_msg, 'order_status_extra');
+            }
+          }
+
+
+WITH:
+
+// ** GOOGLE CHECKOUT **
+            chdir("./..");
+            require_once(DIR_WS_LANGUAGES . $_SESSION['language'] . '/modules/payment/googlecheckout.php');
+            $payment_value= MODULE_PAYMENT_GOOGLECHECKOUT_TEXT_TITLE;
+            $result = $db->Execute("select google_order_number from google_orders where orders_id= ". (int)$oID);
+            $num_rows = $result->RecordCount();
+
+			    	if($num_rows == 0) {
+				//send emails, not a google order
+				      $message = STORE_NAME . "\n" . EMAIL_SEPARATOR . "\n" .
+				      EMAIL_TEXT_ORDER_NUMBER . ' ' . $oID . "\n\n" .
+				      EMAIL_TEXT_INVOICE_URL . ' ' . zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL') . "\n\n" .
+				      EMAIL_TEXT_DATE_ORDERED . ' ' . zen_date_long($check_status->fields['date_purchased']) . "\n\n" .
+				      strip_tags($notify_comments) .
+				      EMAIL_TEXT_STATUS_UPDATED . sprintf(EMAIL_TEXT_STATUS_LABEL, $orders_status_array[$status] ) .
+				      EMAIL_TEXT_STATUS_PLEASE_REPLY;
+				
+				      $html_msg['EMAIL_CUSTOMERS_NAME']    = $check_status->fields['customers_name'];
+				      $html_msg['EMAIL_TEXT_ORDER_NUMBER'] = EMAIL_TEXT_ORDER_NUMBER . ' ' . $oID;
+				      $html_msg['EMAIL_TEXT_INVOICE_URL']  = '<a href="' . zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL') .'">'.str_replace(':','',EMAIL_TEXT_INVOICE_URL).'</a>';
+				      $html_msg['EMAIL_TEXT_DATE_ORDERED'] = EMAIL_TEXT_DATE_ORDERED . ' ' . zen_date_long($check_status->fields['date_purchased']);
+				      $html_msg['EMAIL_TEXT_STATUS_COMMENTS'] = nl2br($notify_comments);
+				      $html_msg['EMAIL_TEXT_STATUS_UPDATED'] = str_replace('\n','', EMAIL_TEXT_STATUS_UPDATED);
+				      $html_msg['EMAIL_TEXT_STATUS_LABEL'] = str_replace('\n','', sprintf(EMAIL_TEXT_STATUS_LABEL, $orders_status_array[$status] ));
+				      $html_msg['EMAIL_TEXT_NEW_STATUS'] = $orders_status_array[$status];
+				      $html_msg['EMAIL_TEXT_STATUS_PLEASE_REPLY'] = str_replace('\n','', EMAIL_TEXT_STATUS_PLEASE_REPLY);
+	
+	            zen_mail($check_status->fields['customers_name'], $check_status->fields['customers_email_address'], EMAIL_TEXT_SUBJECT . ' #' . $oID, $message, STORE_NAME, EMAIL_FROM, $html_msg, 'order_status');
+	
+	            $customer_notified = '1';
+	//send extra emails
+	            if (SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO_STATUS == '1' and SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO != '') {
+	              zen_mail('', SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO, SEND_EXTRA_ORDERS_STATUS_ADMIN_EMAILS_TO_SUBJECT . ' ' . EMAIL_TEXT_SUBJECT . ' #' . $oID, $message, STORE_NAME, EMAIL_FROM, $html_msg, 'order_status_extra');
+	            }
+	          }
+		        else {
+	//        	is a google order
+		         if (!isset($_POST['notify_comments']) || ($_POST['notify_comments'] != 'on')){
+		          	unset($notify_comments);
+		         }
+		         else {
+		         	$customer_notified = '1';
+		         }
+		        
+		       	 google_checkout_state_change($check_status, $status, $oID, $customer_notified, $notify_comments);
+		        }
+        }
+// ** END GOOGLE CHECKOUT **
+
+
+----------------------------------------------------------------------------
+1. YOUR_ZENCART_FOLDER/admin/orders.php                             LINE 570
+============================================================================
+REPLACE:
+
+
+ <td valign="top"><?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?></td>
+          </tr>
+        </table></td>
+
+WITH:
+
+           <td valign="top"><?php echo zen_image_submit('button_update.gif', IMAGE_UPDATE); ?></td>
+            <!-- googlecheckout Tracking Number -->
+<?php 
+// orders_status == STATE_PROCESSING -> Processing before delivery
+	if($order->info['payment_method'] == 'Google Checkout' && $order->info['orders_status'] == STATE_PROCESSING){
+			echo '<td><table border="0" cellpadding="3" cellspacing="0" width="100%">   
+				<tbody>
+					<tr>  
+						<td style="border-top: 2px solid rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255);" nowrap="nowrap" colspan="2">
+								<b>Shipping Information</b>  
+						</td>  
+					</tr>
+					<tr>  
+						<td nowrap="nowrap" valign="middle" width="1%">  
+							<font size="2">  
+								<b>Tracking:</b>  
+							</font>  
+						</td>  
+						<td style="border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);" nowrap="nowrap">   
+							<input name="tracking_number" style="color: rgb(0, 0, 0);" id="trackingBox" size="20" type="text">   
+						</td>  
+					</tr>  
+					<tr>  
+						<td nowrap="nowrap" valign="middle" width="1%">  
+							<font size="2">  
+								<b>Carrier:</b>  
+							</font>  
+						</td>  
+						<td style="border-right: 2px solid rgb(255, 255, 255);" nowrap="nowrap">  
+							<select name="carrier_select" style="color: rgb(0, 0, 0);" id="carrierSelect">  
+								<option value="select" selected="selected">
+								 Select ...  
+								</option>   
+								<option value="USPS">
+								 USPS  
+								</option>   
+								<option value="DHL">
+								 DHL  
+								</option>   
+								<option value="UPS">
+								 UPS  
+								</option>   
+								<option value="Other">
+								 Other  
+								</option>   
+								<option value="FedEx">
+								 FedEx  
+								</option>   
+							</select>  
+						</td>  
+					</tr>     
+				</tbody> 
+			</table></td>';
+	  
+	}
+?>
+<!-- end googlecheckout Tracking Number -->
+          </tr>
+        </table></td>
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+2. YOUR_ZENCART_FOLDER/includes/templates/YOUR_TEMPLATE/templates/tpl_login_default.php    LINE 83
+===================================================================================================================
+REPLACE:
+
+<br class="clearBoth" />
+
+<?php echo zen_draw_form('create_account', zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return check_form(create_account);"') . zen_draw_hidden_field('action', 'process') . zen_draw_hidden_field('email_pref_html', 'email_format'); ?>
+
+WITH:
+
+<br class="clearBoth" />
+ <?php
+  // ** GOOGLE CHECKOUT **
+    include(DIR_WS_MODULES . 'show_google_components.php');  
+  // ** END GOOGLE CHECKOUT **
+ ?>
+
+<?php echo zen_draw_form('create_account', zen_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return check_form(create_account);"') . zen_draw_hidden_field('action', 'process') . zen_draw_hidden_field('email_pref_html', 'email_format'); ?>
+
+
+----------------------------------------------------------------------------------------------------------------------------
+3. YOUR_ZENCART_FOLDER/includes/templates/YOUR_TEMPLATE/templates/tpl_shopping_cart_default.php    LINE 218
+============================================================================================================================
+REPLACE:
+
+<?php
+  $show_display_shopping_cart_empty->MoveNext();
+} // !EOF
+?>
+
+<?php
+  }
+?>
+
+<!-- ** BEGIN PAYPAL EXPRESS CHECKOUT ** -->
+
+WITH:
+
+<?php
+  $show_display_shopping_cart_empty->MoveNext();
+} // !EOF
+?>
+
+<?php
+  }
+?>
+<!-- * BEGIN GOOGLE CHECKOUT * -->
+ <?php
+  // ** GOOGLE CHECKOUT **
+    include(DIR_WS_MODULES . 'show_google_components.php');  
+  // ** END GOOGLE CHECKOUT **
+ ?>
+<!-- * END GOOGLE CHECKOUT * -->
+<!-- ** BEGIN PAYPAL EXPRESS CHECKOUT ** -->

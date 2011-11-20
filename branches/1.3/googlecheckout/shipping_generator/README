@@ -1,0 +1,25 @@
+Automatic shipping generator v0.1
+
+Paste the files in googlecheckout/shipping_generator
+
+Point your browser to http://your-site/googlecheckout/shipping_generator/
+
+Set a Domestic Address and an Int'l Address (you can use default ones)
+
+Click Get Shipping Methods
+
+wait for the script to use Zencart's Shipping class to get all valid shipping 
+methods for those adresses. (Note: Only active shipping providers and valid
+shipping methods for the address setted will be shown. May happen that one
+shipping method available is not present. Is recommended to check all the 
+
+
+Add or remove any shipping method.
+
+When done, click Generate
+
+You must see the $this->mc_shipping_methods and $this->mc_shipping_methods_names
+
+add them to includes/modules/payment/googlecheckout.php
+
+ropu

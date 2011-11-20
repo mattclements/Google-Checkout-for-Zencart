@@ -1,0 +1,93 @@
+HOW TO UPGRADE GOOGLE CHECKOUT MODULE FOR ZEN-CART (v1.4.7RC1)
+
+UPGRADE 
+=======
+BACKUP your database and googlecheckout/logs/*
+There is NO  need to upgrade /googlecheckout/shipping_methods.php* since is a
+  configuration file and no structure was changed-
+
+*Update USPS Configuration
+
+From 1.4.6 to 1.4.7
+
+Modified            googlecheckout/gcheckout.php
+Modified            googlecheckout/responsehandler.php
+Modified            googlecheckout/shipping_methods.php (MODIFIED TO SUPPORT NEW USPS SHIPPING MODULE)
+Modified            includes/templates/YOUR_TEMPLATE/templates/tpl_login_default.php
+Modified            includes/templates/YOUR_TEMPLATE/templates/tpl_shopping_cart_default.php
+Modified            includes/templates/YOUR_TEMPLATE/templates/tpl_time_out_default.php
+Modified            admin/orders.php
+
+
+from 1.4.5 to 1.4.6
+
+SQL to update old module GC orders to new GC Order Status
+AGAIN BACKUP YOUR DATABASE!
+APPLY SQL PATCH JUST ONCE!!
+
+update orders set orders_status = 105 where orders_status = 102 and payment_module_code = 'googlecheckout';
+update orders set orders_status = 107 where orders_status = 103 and payment_module_code = 'googlecheckout';
+update orders set orders_status = 109 where orders_status = 104 and payment_module_code = 'googlecheckout';
+update orders set orders_status = 111 where orders_status = 105 and payment_module_code = 'googlecheckout';
+
+DELETE FROM orders_status WHERE orders_status_id = 102;
+DELETE FROM orders_status WHERE orders_status_id = 104;
+
+
+
+From 1.4.1 to 1.4.5
+
+Added               googlecheckout/shipping_methods_ccs.php
+Modified            googlecheckout/gcheckout.php
+Modified            googlecheckout/responsehandler.php
+Modified            googlecheckout/library/googleitem.php
+Modified            googlecheckout/library/googleresponse.php
+Modified            googlecheckout/library/googleresult.php
+Modified            googlecheckout/library/googleshipping.php
+Modified            googlecheckout/library/googlerequest.php
+Modified            googlecheckout/library/googlecart.php
+Modified            googlecheckout/shipping_generator/shipping_method_generator.php
+Modified            includes/modules/payment/googlecheckout.php
+Modified            admin/includes/functions/extra_functions/added_function_for_google_checkout.php
+
+
+From 1.4beta1 to 1.4.1
+
+SQL to update old module GC orders to new GC Order Status
+
+update orders set orders_status = 100 where orders_status = 1 and payment_module_code = 'googlecheckout';
+update orders set orders_status = 101 where orders_status = 2 and payment_module_code = 'googlecheckout';
+update orders set orders_status = 102 where orders_status = 3 and payment_module_code = 'googlecheckout';
+
+STATUS:             FILE:
+================================================================================
+Modified            googlecheckout/gcheckout.php
+Modified            googlecheckout/responsehandler.php
+Modified            googlecheckout/library/googletax.php
+Modified            googlecheckout/library/googleitem.php
+Modified            googlecheckout/library/googleresponse.php
+Modified            googlecheckout/library/googleresult.php
+Modified            googlecheckout/library/googleshipping.php
+Modified            googlecheckout/library/googlemerchantcalculations.php
+Modified            googlecheckout/library/googlerequest.php
+Modified            googlecheckout/library/googlecart.php
+Modified            googlecheckout/shipping_generator/multigenerator.php
+Modified            googlecheckout/shipping_generator/multishipping_generator.php
+Modified            googlecheckout/shipping_generator/multishipping_generator.js
+Modified            googlecheckout/shipping_generator/shipping_method_generator.php
+Modified            googlecheckout/shipping_methods.php
+Modified            includes/languages/english/modules/payment/googlecheckout.php
+Modified            includes/modules/payment/googlecheckout.php
+Modified            includes/templates/YOUR_TEMPLATE/templates/tpl_time_out_default.php
+Modified            admin/orders.php
+Modified            admin/includes/functions/extra_functions/added_function_for_google_checkout.php
+Modified            INSTALLATION
+Modified            CHANGELOG
+Modified            UPGRADE
+Modified            README
+Added               googlecheckout/shipping_methods_uk.php
+Added               includes/modules/downloads.php
+Added               googlecheckout/library/xml-processing/gc_xmlbuilder.php
+Added               googlecheckout/library/xml-processing/gc_xmlparser.php
+Removed             googlecheckout/library/xml-processing/xmlparser.php
+Removed             googlecheckout/library/xml-processing/xmlbuilder.php

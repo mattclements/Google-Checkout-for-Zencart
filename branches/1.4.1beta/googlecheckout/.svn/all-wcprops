@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/64/branches/1.4.1beta/googlecheckout
+END
+gcheckout.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/63/branches/1.4.1beta/googlecheckout/gcheckout.php
+END
+responsehandler.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/63/branches/1.4.1beta/googlecheckout/responsehandler.php
+END
+shipping_methods_uk.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/61/branches/1.4.1beta/googlecheckout/shipping_methods_uk.php
+END
+shipping_methods.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/61/branches/1.4.1beta/googlecheckout/shipping_methods.php
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/61/branches/1.4.1beta/googlecheckout/index.html
+END
