@@ -31,7 +31,7 @@ error_reporting(E_ALL);
 
 // temporal disable of multisocket 
 define('MODULE_PAYMENT_GOOGLECHECKOUT_MULTISOCKET', 'False');
-
+define('SESSION_BLOCK_SPIDERS','False');
 
 define('GC_STATE_NEW', 100);
 define('GC_STATE_PROCESSING', 101);
