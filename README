@@ -1,4 +1,4 @@
-GOOGLE CHECKOUT PLUGIN FOR ZEN CART v1.4.7 RC1 - 12/14/2007
+GOOGLE CHECKOUT PLUGIN FOR ZEN CART v1.4.8 - 2011-11-12
 
 INTRODUCTION
 ============
@@ -20,7 +20,7 @@ Plugin features include:
 
 REQUIREMENTS
 ============
-Zen Cart v1.3.8a
+Zen Cart v1.3.9h
 PHP3 or PHP4 or PHP5 with cURL(libcurl) installed and enabled
 
 INSTALLATION NOTES
