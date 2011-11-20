@@ -1,0 +1,69 @@
+GOOGLE CHECKOUT PLUGIN FOR ZEN CART v1.0.1 - 10/03/2006
+
+INTRODUCTION
+============
+The Google Checkout module for Zen Cart adds Google Checkout as a Checkout Module within Zen Cart.
+This will allow merchants using Zen Cart to offer Google Checkout as an alternate checkout method.
+The plugin provides Level 2 integration of Google Checkout with Zen Cart.
+
+Plugin features include:
+1. Posting shopping carts to Google Checkout
+2. Shipping support (Currently, flat rates, item rates and table rates are supported)
+3. Tax support
+4. User and order updates within Zen Cart
+5. Order processing using Zen Cart Admin UI 
+
+
+REQUIREMENTS
+============
+Zen Cart v1.3.5 (released 04-Sept-2006)
+PHP3 or PHP4 or PHP5 with cURL(libcurl) installed and enabled
+
+
+INSTALLATION NOTES
+==================
+Follow instructions contained in the INSTALLATION file.
+Verify the installation from the Admin site and selecting MODULES->PAYMENTS and checking if Google Checkout is listed as a payment option.
+
+
+SETUP ON ADMIN UI
+=================
+Select and install the Google Checkout payment module. The following are some of the fields you can update:
+
+1. Enable/Disable: Enable this to use Google Checkout for your site.
+2. Merchant ID and Merchant Key:(Mandatory) If any of these are not set and the module is enabled, a disabled (gray) Checkout button appears on the Checkout page. 
+   Set these values from your seller Google account under the Settings->Integration tab.
+3. Operation Mode: Test your site with Google Checkout's sandbox server before migrating to production. You will need it signup for a separate Google Checkout sandbox account at http://sandbox.google.com/sell. Your sandbox account will have a different Merchant ID and Merchant Key. When you are ready to run against the production server, remember to update your merchant ID and key when migrating.
+4. Shipping Options: Select the shipping options to be supported.
+   If the shipping tax rates differ, a disabled Checkout button will appear on the Checkout page.
+
+Your Google Checkout setup page is correct if, upon viewing it, a non-disabled Google Checkout button appears.
+
+
+TRACKING USERS AND ORDERS
+=========================
+In order to provide this support (as required for Level 2 integration), update the API callback request field in the seller account to https://<url-site-url>/admin/googlecheckout/responsehandler.php . Note that the production Checkout server requires an SSL callback site.
+The Sandbox server accepts non SSL callback URLs.
+
+View your Google Checkout customers and their orders in the Reports tab. 
+For each order, the default starting state is PENDING. 
+The state changes to PROCESSING and DELIVERED as follows; corresponding messages will be sent out to the Checkout server for order processing.
+
+| Original State | New State  | Action                         |  Customer Notification    |
+| PENDING        | PROCESSING | charging the order             |  Processing order message |
+| PROCESSING     | DELIVERED  | marking the order for delivery |  Shipped order message    |
+
+Any comments added during state change will be sent to the buyer account page if you have selected the Append Comments option.
+
+All request and response messages will be logged to the file admin/googlecheckout/response_message.log.
+In case an order payment is declined or an order is cancelled(by Google or otherwise), you can add code to admin/googlecheckout/responsehandler.php for any specific actions you need to take.
+ 
+
+PROJECT HOME
+============
+To check out the latest release or to report issues, go to http://code.google.com/p/google-checkout-zencart
+
+
+GROUP DISCUSSIONS
+=================
+To meet other developers and merchants who have integrated Google Checkout with Zen Cart and to discuss any topics related to integration of Google Checkout with Zen Cart, go to http://www.zen-cart.com/forum/showthread.php?t=47318
