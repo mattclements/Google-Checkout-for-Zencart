@@ -682,7 +682,6 @@ if(sizeof($tax_class_unique) == 1 && sizeof($module_info_enabled) == sizeof($tax
   $tax_rule = array();
 
   for($j=0; $j<$num_rows; $j++) {
-    $tax_result->MoveNext();
     $rate = ((double) ($tax_result->fields['tax_rate']))/100.0;
     $GDtaxRule = new GoogleDefaultTaxRule($rate, 'true');
 		if($tax_result->fields['countries_iso_code_2'] == 'US') {
@@ -697,6 +696,7 @@ if(sizeof($tax_class_unique) == 1 && sizeof($module_info_enabled) == sizeof($tax
       $GDtaxRule->AddPostalArea($tax_result->fields['countries_iso_code_2']);
 		}      			
     $Gcart->AddDefaultTaxRules($GDtaxRule);
+    $tax_result->MoveNext();
   }
 } else {
   $GDtaxRule = new GoogleDefaultTaxRule(0, 'false');
@@ -726,7 +726,6 @@ foreach($tax_array as $tax_table)  {
   $GAtaxTable = new GoogleAlternateTaxTable((!empty($tax_name_array[$i])?$tax_name_array[$i]:'none'), 'false');
 
   for($j=0; $j<$num_rows; $j++) {
-    $tax_result->MoveNext();
     $rate = ((double)($tax_result->fields['tax_rate']))/100.0;
     $GAtaxRule = new GoogleAlternateTaxRule($rate);
 		if($tax_result->fields['countries_iso_code_2'] == 'US') {
@@ -744,6 +743,7 @@ foreach($tax_array as $tax_table)  {
 		}      
     			
     $GAtaxTable->AddAlternateTaxRules($GAtaxRule);
+    $tax_result->MoveNext();
   }
   $i++;
   $Gcart->AddAlternateTaxTables($GAtaxTable);  
