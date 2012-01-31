@@ -315,7 +315,7 @@ Check states.jpg for the states machine diagram.
 PROJECT HOME
 ============
 To check out the latest release or to report issues, go to
- http://code.google.com/p/google-checkout-zencart
+ https://github.com/mattclements/Google-Checkout-for-Zencart
 
 
 GROUP DISCUSSIONS
@@ -323,7 +323,7 @@ GROUP DISCUSSIONS
 To meet other developers and merchants who have integrated Google Checkout
  with Zen Cart and to discuss any topics related to integration of Google 
  Checkout with Zen Cart, go to 
- http://groups.google.com/group/google-checkout-for-zen-cart-mod-support
+ https://github.com/mattclements/Google-Checkout-for-Zencart/issues
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -403,7 +403,7 @@ TROUBLE SHOOTING
 KNOWN BUGS -
 ==========
 (Report bugs at 
- http://groups.google.com/group/google-checkout-for-zen-cart-mod-support)
+ https://github.com/mattclements/Google-Checkout-for-Zencart/issues)
 
 CHANGELOG
 =========
