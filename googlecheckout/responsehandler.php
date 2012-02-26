@@ -17,7 +17,7 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-/* **GOOGLE CHECKOUT ** v1.4.7
+/* **GOOGLE CHECKOUT ** v1.5.0
  * @version $Id: responsehandler.php 6959 2007-12-14 14:58:57Z ropu $
  * Script invoked for any callback notfications from the Checkout server
  * Can be used to process new order notifications, order state changes and risk notifications

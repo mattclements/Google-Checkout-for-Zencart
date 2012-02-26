@@ -186,18 +186,23 @@ CHANGE LOG
     - Added shipping_methods_uk.php with UK pre-configured shipping methods.
     - Admin UI configuration regroupment
 
-09/26/2007 v1.4.5_CCS (ropu)
+26/09/2007 v1.4.5_CCS (ropu)
     - Added Carrier Calculated Shipping Support (CCS)!!
       (http://code.google.com/apis/checkout/developer/Google_Checkout_XML_API_Carrier_Calculated_Shipping.html)
     - Freeshipper Bug
     - GoogleAnalytics Bug
     - Added Recommended Default Values to Shipping_generator
 
-10/08/2007 v1.4.6 (ropu)
+08/10/2007 v1.4.6 (ropu)
    - Added intermediate Digital State
   
-12/14/2007 v1.4.7RC1 (ropu)
+14/12/2007 v1.4.7RC1 (ropu)
    - Fixed user creation Bug
    - Fixed Duplicated tax bug
-   - Updted templates and orders.php to work with ZC v1.3.8a
+   - Updated templates and orders.php to work with ZC v1.3.8a
   
+12/11/2011 v1.4.8 (mattclements)
+   - Added support for v1.3.9 with fix from here: http://www.zen-cart.com/forum/showpost.php?p=876137&postcount=106
+   
+26/11/2011 v1.4.9 (mattclements)
+   - Fixed minor issue with initial VAT option being missed (Reported by davidAIS)
