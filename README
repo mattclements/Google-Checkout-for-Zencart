@@ -1,4 +1,4 @@
-GOOGLE CHECKOUT PLUGIN FOR ZEN CART v1.4.8 - 2011-11-12
+GOOGLE CHECKOUT PLUGIN FOR ZEN CART v1.5.0 - 2012-02-26
 
 INTRODUCTION
 ============
@@ -248,6 +248,10 @@ In order to provide this support (as required for Level 2 integration), update
  https://<url-site-url>/googlecheckout/responsehandler.php . 
  Note that the production Checkout server requires an SSL callback site.
 The Sandbox server accepts non SSL callback URLs.
+
+Within the Google Checkout panel, go to Settings > Integration. Set the
+Callback contents to Notification as XML, rather than Notification Serial
+Number.
 
 View your Google Checkout customers and their orders in the Reports tab. 
 For each order, the default starting state is Google New. 

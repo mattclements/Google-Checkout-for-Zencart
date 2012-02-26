@@ -13,6 +13,10 @@ IMPORTANT: Uninstall and re install the module. If not, many new configuration
 There are two installation options you need to choose from, so please read 
   carefully to determine which option is right for you.
 
+
+
+
+
 OPTION A:
 =========
 If you have the basic Zen Cart installation without any other modules or 
@@ -27,7 +31,7 @@ For your reference, here is the list of files you need to copy over to your syst
       
   YOUR_ZENCART_FOLDER/admin:
       htaccess.php
-      orders.php
+      orders.php -------------------------- This file is located in either files_for_v1.3.X or files_for_v1.5 depending on the version
       
   YOUR_ZENCART_FOLDER/admin/includes/functions/extra_functions:
       added_function_for_google_checkout.php
@@ -102,8 +106,15 @@ For your reference, here is the list of files you need to copy over to your syst
  your templates, you must put the files in /includes/templates/YOUR_TEMPLATE/ 
  in your own templates dir there you should see the GC buy button.
 
-OPTION B:
-=========
+
+
+
+
+
+
+OPTION B (Line numbers are correct in v1.3.9):
+==============================================
+
 If you have other modules installed on your Zen Cart installation, replacing 
  your existing files might break your existing installation. In this case, you 
  need to edit the existing files manually.
