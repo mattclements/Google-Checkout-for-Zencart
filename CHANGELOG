@@ -206,3 +206,6 @@ CHANGE LOG
    
 26/11/2011 v1.4.9 (mattclements)
    - Fixed minor issue with initial VAT option being missed (Reported by davidAIS)
+   
+26/02/2012 v1.5.0 (mattclements)
+	- Full support for v1.5.0 (still backwards compatible for pre v1.5.0)
