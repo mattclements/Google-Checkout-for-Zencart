@@ -18,12 +18,12 @@
 */
 
 
-/* **GOOGLE CHECKOUT ** v1.5.0
+/* **GOOGLE CHECKOUT ** v1.5.1
   @version $Id: googlecheckout.php 7492 2007-10-08 14:58:57Z ropu $
  * Class provided in modules dir to add googlecheckout as a payment option
  * Member variables refer to currently set paramter values from the database
  */
-define('GOOGLECHECKOUT_FILES_VERSION', 'v1.5.0');
+define('GOOGLECHECKOUT_FILES_VERSION', 'v1.5.1');
 class googlecheckout extends base {
   var $code, $title, $description, $merchantid, $merchantkey, $mode,
       $enabled, $shipping_support, $variant;
