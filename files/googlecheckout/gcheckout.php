@@ -390,6 +390,14 @@ if($cart->get_content_type() != 'virtual') {
       default:
         break;
     }
+    
+    
+    $sort_result = $db->Execute("SELECT configuration_value
+    FROM ".TABLE_CONFIGURATION."
+    WHERE configuration_key = 'MODULE_SHIPPING_". $curr_ship. "_SORT_ORDER'
+    LIMIT 1");
+    
+    
 
   	if (@constant('MODULE_SHIPPING_' . $curr_ship . '_STATUS') == 'True') {
       $module_info_enabled[$module->code] = array('enabled' => true);
@@ -400,7 +408,8 @@ if($cart->get_content_type() != 'virtual') {
   			'code' => $module->code,
   			'title' => $module->title,
   			'description' => $module->description,
-  			'status' => $module->check());
+  			'status' => $module->check(),
+  			'sortorder' => intval($sort_result->fields['configuration_value']));
   
   	}
   }
@@ -427,10 +436,30 @@ if($cart->get_content_type() != 'virtual') {
   
   $shipping_config_errors = '';
   $free_shipping = false;
+  
+  /*
+  aasort from http://stackoverflow.com/a/2699110
+  */
+  function aasort (&$array, $key) {
+	    $sorter=array();
+	    $ret=array();
+	    reset($array);
+	    foreach ($array as $ii => $va) {
+	        $sorter[$ii]=$va[$key];
+	    }
+	    asort($sorter);
+	    foreach ($sorter as $ii => $va) {
+	        $ret[$ii]=$array[$ii];
+	    }
+	    $array=$ret;
+	}
+  
+  aasort($module_info,'sortorder');
+  
   foreach ($module_info as $key => $value) {
   	// check if the shipping method is activated
   	$module_name = $module_info[$key]['code'];
-  	$curr_ship = strtoupper($module_name);
+  	$curr_ship = strtoupper($module_name);	
   	// patch to non standard common strings
     switch($curr_ship){
       case 'FEDEXGROUND':
@@ -624,7 +653,7 @@ if($cart->get_content_type() != 'virtual') {
         }
       }
     }
-    $Gcart->AddShipping($Gshipping);                    
+    $Gcart->AddShipping($Gshipping);                   
   }
 }
 // end shipping methods
