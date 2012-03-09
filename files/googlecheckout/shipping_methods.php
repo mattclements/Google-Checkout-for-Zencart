@@ -1,6 +1,6 @@
 <?php
 /*
- **GOOGLE CHECKOUT ** v1.5.0
+ **GOOGLE CHECKOUT ** v1.5.1
  * @version $Id: shipping_methods.php 5852 2007-12-14 14:58:57Z ropu $
  * 
  */
