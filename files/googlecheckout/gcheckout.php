@@ -559,8 +559,21 @@ if($cart->get_content_type() != 'virtual') {
     					$default_value = 1;
               $module = new $module_name;
     					$quote = $module->quote($method);
-    					$price = $quote['methods'][0]['cost'];
+    					
+				if ($quote)
+				{
+					$price = $quote['methods'][0]['cost'];
+					$shipping_price = $currencies->get_value(DEFAULT_CURRENCY) * ($price>=0?$price:0);
+				}
+				else
+				{
+					unset($googlepayment->mc_shipping_methods[$key]) ;
+					continue;
+				}	
+    			/*
+    			$price = $quote['methods'][0]['cost'];
               $shipping_price = $currencies->get_value(DEFAULT_CURRENCY) * ($price>=0?$price:0);
+              */
     				}
             $Gfilter = new GoogleShippingFilters();
     				if(MODULE_PAYMENT_GOOGLECHECKOUT_USPOBOX == 'False') {
