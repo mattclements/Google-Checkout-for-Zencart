@@ -329,9 +329,7 @@ To meet other developers and merchants who have integrated Google Checkout
  Checkout with Zen Cart, go to 
  https://github.com/mattclements/Google-Checkout-for-Zencart/issues
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 MOST COMMON MISTAKES
 ====================
 1. Make sure you set the file attribute to 777 for 
@@ -349,8 +347,8 @@ MOST COMMON MISTAKES
  your templates, you must put the files in /includes/templates/YOUR_TEMPLATE/ 
  in your own templates dir there you should see the GC buy button.
 	
-TROUBLE SHOOTING
-================
+TROUBLESHOOTING
+===============
 1. Problem: Fatal error: Call to undefined function: getallheaders() error.
 	Solution: You webhosting company does not have the function getallheaders()
 	 enable on your webserver. Fixed in v1.0.5
