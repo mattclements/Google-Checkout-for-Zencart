@@ -795,12 +795,12 @@ if(!(MODULE_PAYMENT_GOOGLECHECKOUT_ANALYTICS == 'NONE')) {
   $Gcart->AddGoogleAnalyticsTracking(MODULE_PAYMENT_GOOGLECHECKOUT_ANALYTICS);
 }
 ?>
-<div align="right">
+<div style="float: right">
   <?php 
         echo '<div style="width: 180px; text-align: center;"><b>' . MODULE_PAYMENT_GOOGLECHECKOUT_TEXT_OPTION . '</b></div>';
   ?>
 </div>
-<div align="right">
+<div style="float: right">
     <?php
     echo $Gcart->CheckoutButtonCode();
     ?>
