@@ -372,7 +372,7 @@ TROUBLESHOOTING
 	Solution: Wrong merchant id.  Sandbox merchant id can only be use with sandbox
 	 accounts.  Sandbox and Live mode use different merchant id. 
 6. Problem: sun.security.validator.ValidatorException: PKIX path building
-    failed: sun.security.provider.certpath.SunCertPathBuilderE xception: unable
+    failed: sun.security.provider.certpath.SunCertPathBuilderException: unable
     to find valid certification path to requested target
 	Solution: Your SSL certificate is not accepted by Google Checkout.
 	Links for supported SSL certificates:
@@ -386,7 +386,7 @@ TROUBLESHOOTING
     Sessions configuration (Thx dawnmariegifts, beta tester)
    Side effects: You'll see spiders as active users.
    Solution 2 (Recommended): Remove any string like 'jakarta' in the includes/spider.txt
-9. Problem:
+9. Problem: (Fixed in new versions of the Module)
     Warning: main(admin/includes/configure.php) [function.main]: failed to open 
      stream: No such file or directory in /public_html/googlecheckout/gcheckout.php
      on line 33
@@ -406,7 +406,10 @@ TROUBLESHOOTING
      Try adding an echo in googlecheckout/gcheckout.php
        echo $module_directory = DIR_FS_CATALOG . DIR_WS_MODULES . 'shipping/';
      and in the shopping_cart.php page see if the string u see is the correct 
-     dir where the shipping file are. 	
+     dir where the shipping file are.
+12. "The address that you are shipping from is invalid. Please send a correct US address"
+	Evaluate the XML with the section `<ship-from id="Store_origin">`. If this only holds the Post Code,
+	then change the Store Address and Phone on Admin -> Configuration -> My Store to your full address.
 KNOWN BUGS -
 ==========
 (Report bugs at 
