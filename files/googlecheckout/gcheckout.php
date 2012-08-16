@@ -35,27 +35,42 @@
 require('includes/languages/' .  $_SESSION['language'] . '/' .'modules/payment/googlecheckout.php');
 require_once('includes/modules/payment/googlecheckout.php');
 
-function selfURL() { 
-  $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : ""; 
-  $protocol = strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s; 
-  $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]); 
-  return $protocol."://".$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI']; 
+if(!function_exists('selfURL'))
+{
+	function selfURL() { 
+	  $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : ""; 
+	  $protocol = strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s; 
+	  $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]); 
+	  return $protocol."://".$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI']; 
+	}
 }
-function strleft($s1, $s2) { 
-  return substr($s1, 0, strpos($s1, $s2)); 
+if(!function_exists('strleft'))
+{
+	function strleft($s1, $s2) { 
+	  return substr($s1, 0, strpos($s1, $s2)); 
+	}
 }
 
 //Functions used to prevent SQL injection attacks
-function makeSqlString($str) {
-  return addcslashes(stripcslashes($str), "\"'\\\0..\37!@\@\177..\377");
+if(!function_exists('makeSqlString'))
+{
+	function makeSqlString($str) {
+	  return addcslashes(stripcslashes($str), "\"'\\\0..\37!@\@\177..\377");
+	}
 }
 
-function makeSqlInteger($val) {
-  return ((settype($val, 'integer'))?($val):0); 
+if(!function_exists('makeSqlInteger'))
+{
+	function makeSqlInteger($val) {
+	  return ((settype($val, 'integer'))?($val):0); 
+	}
 }
 
-function makeSqlFloat($val) {
-  return ((settype($val, 'float'))?($val):0); 
+if(!function_exists('makeSqlFloat'))
+{
+	function makeSqlFloat($val) {
+	  return ((settype($val, 'float'))?($val):0); 
+	}
 }
 
 $googlepayment = new googlecheckout();
@@ -423,6 +438,8 @@ if($cart->get_content_type() != 'virtual') {
                           , array_keys($module_info_enabled)))) ? true : false;
   
   // campare name:vale and returns value for configurations parameters
+if(!function_exists('compare'))
+{
   function compare($key, $data, $sep="_VD:", $def_ret='0')
   {
   	foreach($data as $value) {
@@ -432,6 +449,7 @@ if($cart->get_content_type() != 'virtual') {
   	}
   	return $def_ret;
   }
+}
   $key_values = explode( ", ", MODULE_PAYMENT_GOOGLECHECKOUT_SHIPPING);
   
   $shipping_config_errors = '';
@@ -440,6 +458,8 @@ if($cart->get_content_type() != 'virtual') {
   /*
   aasort from http://stackoverflow.com/a/2699110
   */
+if(!function_exists('aasort'))
+{
   function aasort (&$array, $key) {
 	    $sorter=array();
 	    $ret=array();
@@ -453,6 +473,7 @@ if($cart->get_content_type() != 'virtual') {
 	    }
 	    $array=$ret;
 	}
+}
   
   aasort($module_info,'sortorder');
   
