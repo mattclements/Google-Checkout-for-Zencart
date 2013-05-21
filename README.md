@@ -1,3 +1,12 @@
+!!! Discontinued !!!
+====================
+Due to Google retiring Google Checkout this module is now unsupported.
+Read more about the retirement [here](https://support.google.com/checkout/sell/answer/3080449)
+
+
+---
+
+
 GOOGLE CHECKOUT PLUGIN FOR ZEN CART v1.5.1
 Released: 2012-03-09
 
