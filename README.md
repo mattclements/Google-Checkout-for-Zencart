@@ -7,6 +7,13 @@ Read more about the retirement [here](https://support.google.com/checkout/sell/a
 ---
 
 
+
+
+
+
+
+
+
 GOOGLE CHECKOUT PLUGIN FOR ZEN CART v1.5.1
 Released: 2012-03-09
 
